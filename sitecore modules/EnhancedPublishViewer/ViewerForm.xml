@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--=============================================================
+    File: ViewerForm.xml                                                   
+    Created by: Mrunal Brahmbhatt
+    Created: 05/27/2011 3:45:15 PM                                               
+==============================================================-->
+
+<control xmlns:def="Definition" xmlns="http://schemas.sitecore.net/Visual-Studio-Intellisense">
+  <PublishViewer>
+    <FormPage>
+      <CodeBeside Type="Sitecore.EnhancedPublishViewer.Forms.ViewerForm,Sitecore.EnhancedPublishViewer"/>
+      <!--To Enable Timer functionality in Base Form-->
+      <script type='text/javascript'>window.setTimeout('scForm.invoke("local:StartTimer")', 0)</script>
+      <GridPanel class="scBackground" vAlign="top" Height="100%" Width="100%" Cellpadding="0">
+        <!--The Toolbar is aligned at the top of the application.  It holds buttons to control
+            behavior on the Listview items-->
+        <Toolbar ID="MainToolbar">
+          <!--When user clicks this button, fire the Refresh() method-->
+          <Toolbutton ID="RefreshToolbutton"
+                      Header="Refresh"
+                      Icon="Applications/16x16/refresh.png"
+                      Click="Refresh" />
+          <Tooldivider />
+          <!--Toggle timer Status -->
+
+          <Checkbox ID="chkAutoRefresh" Header="Auto Refresh" Checked="true" Click="Refresh"/>
+          <Tooldivider />
+          <!--Toggle Additional Show Jobs-->
+
+
+          <Checkbox ID="chkShowAdditionalJobs" Header="Show Additional" Checked="false" Click="Refresh"/>
+        </Toolbar>
+        <GridPanel Width="100%" Height="100%" Columns="3" GridPanel.Height="100%"  Style="table-layout:fixed" >
+          <Scrollbox Width="100%" Height="100%" Padding="0" >
+            <!--The Listview is where our queried list of items will display-->
+            <Listview ID="ItemList"
+                      MultiSelect="False"
+                      View="Details"
+                      Width="100%"
+                      Background="white"
+              >
+              <!--Define the headers for our Listview, and hook them up to real data columns-->
+              <ListviewHeader>
+                <ListviewHeaderItem Name="Icon" Header="" visible="false" />
+                <ListviewHeaderItem Name="QueueTime" Header="QueueTime" />
+                <ListviewHeaderItem Name="JobName" Header="JobName" />
+                <ListviewHeaderItem Name="Handle" Header="Handle" />
+                <ListviewHeaderItem Name="JobStatus" Header="JobStatus" />
+                <!--<ListviewHeaderItem Name="JobCategory" Header="JobCategory" />-->
+                <ListviewHeaderItem Name="Mode" Header="Mode" />
+                <ListviewHeaderItem Name="Owner" Header="Owner" />
+                <ListviewHeaderItem Name="ItemName" Header="ItemPath" />
+                <ListviewHeaderItem Name="SourceDatabase" Header="SourceDB" />
+                <ListviewHeaderItem Name="TargetDatabase" Header="TargetDB(s)" />
+                <ListviewHeaderItem Name="CurrentTargetDatabase" Header="CurrentDB" />
+                <ListviewHeaderItem Name="Processed" Header="Processed" />
+                <ListviewHeaderItem Name="ChildCount" Header="ChildCount" />
+                <ListviewHeaderItem Name="Percentage" Header="Percentage" />
+                <ListviewHeaderItem Name="Languages" Header="Language(s)" />
+                <ListviewHeaderItem Name="CurrentLanguage" Header="CurrentLanguage" />
+                <ListviewHeaderItem Name="Message" Header="Message" />
+              </ListviewHeader>
+            </Listview>
+          </Scrollbox>
+        </GridPanel>
+
+      </GridPanel>
+    </FormPage>
+  </PublishViewer>
+</control>
